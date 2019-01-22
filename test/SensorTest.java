@@ -10,7 +10,7 @@ public class SensorTest {
   @Before
   public void createSensor() {
 
-    sensor = new SensorSolution(1, 10, new int[]{-2, 8, 5, 3, 8, 8, 1, 15});
+    sensor = new Sensor(1, 10, new int[]{-2, 8, 5, 3, 8, 8, 1, 15});
     //todo test with different input, edge cases, negative numbers
 
   }
