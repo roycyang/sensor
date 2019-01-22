@@ -2,3 +2,4 @@
 *.iml
 src/SensorSolution.java
 out/
+.idea/workspace.xml
