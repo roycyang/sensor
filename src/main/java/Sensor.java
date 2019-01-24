@@ -1,4 +1,4 @@
-public class Sensor implements SensorInterface {
+public class Sensor {
 
   private int lower;
   private int higher;
@@ -8,20 +8,29 @@ public class Sensor implements SensorInterface {
 
   }
 
-  @Override
   public double findMean() {
     return 0;
   }
 
-  @Override
   public double findMedian() {
     return 0;
   }
 
-  @Override
   public int findMode() {
     return 0;
   }
 
+
+  public int getLower() {
+    return lower;
+  }
+
+  public int getHigher() {
+    return higher;
+  }
+
+  public int[] getBuffer() {
+    return buffer;
+  }
 
 }

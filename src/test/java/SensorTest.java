@@ -5,21 +5,30 @@ import static org.junit.Assert.assertEquals;
 
 public class SensorTest {
 
-  private SensorInterface sensor;
+  private Sensor sensor;
 
   @Before
   public void createSensor() {
 
     sensor = new Sensor(1, 10, new int[]{-2, 8, 5, 3, 8, 8, 1, 15});
-    //todo test with different input, edge cases, negative numbers
 
   }
 
+  @Test
+  public void TestInstance() {
+
+    assertEquals(sensor.getLower(), 1, 0);
+    assertEquals(sensor.getHigher(), 10, 0);
+    assertEquals(sensor.getBuffer().length, 6, 0);
+    assertEquals(sensor.toString(), "1,3,5,8,8,8");
+
+  }
 
   @Test
   public void TestMean() {
 
     double meanResult = sensor.findMean();
+
     assertEquals(meanResult, 5.5, 0);
 
   }
