@@ -19,7 +19,7 @@ public class SensorTest {
 
     assertEquals(sensor.getLower(), 1, 0);
     assertEquals(sensor.getHigher(), 10, 0);
-    assertEquals(sensor.getBuffer().length, 6, 0);
+    assertEquals(sensor.getOutput().length, 6, 0);
     assertEquals(sensor.toString(), "1,3,5,8,8,8");
 
   }
@@ -29,16 +29,27 @@ public class SensorTest {
 
     double meanResult = sensor.findMean();
 
-    assertEquals(meanResult, 5.5, 0);
+    assertEquals(5.5, meanResult, 0);
 
   }
 
   @Test
-  public void TestMedian() {
+  public void TestMedian1() {
 
     double medianResult = sensor.findMedian();
 
-    assertEquals(medianResult, 6.5, 0);
+    assertEquals(6.5, medianResult, 0);
+
+  }
+
+  @Test
+  public void TestMedian2() {
+
+    sensor = new Sensor(1, 10, new int[]{-2, 8, 5, 3, 8, 1, 15})
+
+    double medianResult = sensor.findMedian();
+
+    assertEquals(6.5, medianResult, 0);
 
   }
 
@@ -47,7 +58,7 @@ public class SensorTest {
 
     int modeResult = sensor.findMode();
 
-    assertEquals(modeResult, 8, 0);
+    assertEquals(8, modeResult, 0);
 
   }
 
