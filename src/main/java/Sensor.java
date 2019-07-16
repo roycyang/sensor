@@ -13,8 +13,11 @@ public class Sensor {
     this.lower = lower;
     this.higher = higher;
     this.buffer = buffer;
+    this.output = Arrays.stream(this.buffer)
+            .filter(number -> number >= this.lower && number <= this.higher)
+            .toArray();
+    Arrays.sort(this.output);
   }
-
 
   public double findMean() {
     return Arrays.stream(this.getOutput()).average().orElse(Double.NaN);
@@ -24,28 +27,22 @@ public class Sensor {
     int[] a = this.getOutput();
     int n = a.length;
 
-    // Even
     if (n % 2 != 0) {
-      return (double)a[n / 2];
+      return (double) a[n / 2];
     }
 
-    return (double)(a[(n - 1) / 2] + a[n / 2]) / 2.0;
+    return (double) (a[(n - 1) / 2] + a[n / 2]) / 2.0;
   }
 
   public int findMode() {
-    // Creating a HashMap
-    Map<Integer, Integer> modeMapping = new HashMap<>();
-
     int[] output = this.getOutput();
     int highest = 0;
     int mode = output[0];
-    int i;
-    int count;
-
-    System.out.println("MODE");
+    int count = 0;
+    Map<Integer, Integer> modeMapping = new HashMap<>();
 
     // iterating over an array
-    for (i = 0; i < output.length; i++) {
+    for (int i = 0; i < output.length; i++) {
       int key = output[i];
 
       if (modeMapping.containsKey(key)) {
@@ -79,9 +76,7 @@ public class Sensor {
   }
 
   public int[] getOutput() {
-    int[] output = Arrays.stream(this.buffer).filter(number -> number >= this.lower && number <= this.higher).toArray();
-    Arrays.sort(output);
-    return output;
+    return this.output;
   }
 
   public String toString() {
